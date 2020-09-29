@@ -1,0 +1,14 @@
+image:
+  name: traefik
+  tag: v2.3
+  pullPolicy: Always
+
+service:
+  name: traefik
+  internalPort: 80
+
+replicaCount: 1
+
+domain:
+authSecret: 
+certResolver: myresolver

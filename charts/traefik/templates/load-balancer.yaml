@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: tcp-loadbalancer
+  namespace: kube-system
+spec:
+  type: LoadBalancer
+  selector:
+    app: {{ template "traefik.name" . }}
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8000
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 4443
+    - name: admin
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
